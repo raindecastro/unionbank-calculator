@@ -1,0 +1,40 @@
+.resultsContainer {
+  .resultsContainer__firstSection {
+    background-image: url('../../assets/images/Photo2.jpg');
+    min-height: 30vh;
+    background-size: cover;
+    display: flex;
+    padding: 2em 3em;
+    align-items: flex-end;
+    background-position: bottom;
+  }
+
+  .resultsContainer__header {
+    color: white;
+    width: 80%;
+  }
+
+  .resultsContainer__secondSection {
+    padding: 3em;
+  }
+
+  .resultsContainer__infoList {
+    margin-bottom: 2em;
+  }
+
+  .resultsContainer__referenceNo {
+    font-weight: 600;
+  }
+
+  .resultsContainer__footer {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resultsContainer__footerSmall {
+    font-size: 10px;
+  }
+}

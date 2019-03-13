@@ -1,0 +1,17 @@
+.welcomeContainer .welcomeContainer__firstSection {
+  background-image: url("../../assets/images/Photo1.jpg");
+  min-height: 30vh;
+  background-size: cover;
+  display: flex;
+  padding: 2em 3em;
+  align-items: flex-end; }
+
+.welcomeContainer .welcomeContainer__header {
+  color: white;
+  width: 75%; }
+
+.welcomeContainer .welcomeContainer__secondSection {
+  padding: 3em; }
+
+.welcomeContainer .welcomeContainer__infoList {
+  margin-bottom: 2em; }

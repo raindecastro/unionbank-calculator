@@ -1,0 +1,56 @@
+.unionCalculator .unionCalculator__firstSection {
+  padding: 2em; }
+
+.unionCalculator .unionCalculator__info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em; }
+  .unionCalculator .unionCalculator__info .unionCalculator__title {
+    display: flex;
+    margin-bottom: 0.4em; }
+  .unionCalculator .unionCalculator__info .unionCalculator__number {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: #fca222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5em; }
+    .unionCalculator .unionCalculator__info .unionCalculator__number span {
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      color: #2d2d2d; }
+
+.unionCalculator .unionCalculator__summary {
+  padding: 1em;
+  background-color: #fcfcfc; }
+  .unionCalculator .unionCalculator__summary .unionCalculator__summaryLabel {
+    font-family: 'Montserrat', sans-serif;
+    color: #2d2d2d;
+    font-size: 14px;
+    font-weight: 600; }
+  .unionCalculator .unionCalculator__summary .unionCalculator__summaryTotal {
+    font-family: 'Montserrat', sans-serif;
+    color: #2d2d2d;
+    font-size: 32px;
+    font-weight: 600; }
+
+.unionCalculator .unionCalculator__summarySmall {
+  font-family: 'Open Sans';
+  font-size: 10px;
+  font-style: italic; }
+
+.unionCalculator .unionCalculator__continueButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+  cursor: pointer; }
+  .unionCalculator .unionCalculator__continueButton .unionCalculator__arrowDown {
+    color: #fca222; }
+
+.unionCalculator .unionCalculator__form {
+  background-color: #fcfcfc;
+  padding: 2em; }

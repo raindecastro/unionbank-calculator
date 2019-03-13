@@ -1,0 +1,49 @@
+{
+  "name": "pahiram-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "immutable": "^4.0.0-rc.12",
+    "moment": "^2.23.0",
+    "react": "^16.7.0",
+    "react-burger-menu": "^2.6.5",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "2.1.3",
+    "react-scroll": "^1.7.11",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-saga": "^0.16.2",
+    "serve": "^10.1.1",
+    "superagent": "^4.1.0",
+    "superagent-defaults": "^0.1.14"
+  },
+  "scripts": {
+    "build:css": "node-sass-chokidar src/ -o src/",
+    "watch:css": "node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start:js": "react-scripts start",
+    "build:js": "react-scripts build",
+    "start-dev": "npm-run-all -p build:css watch:css start:js",
+    "start": "serve -s build",
+    "build": "npm-run-all -p build:css build:js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "postinstall": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "node-sass-chokidar": "^1.3.4",
+    "npm-run-all": "^4.1.5"
+  }
+}
