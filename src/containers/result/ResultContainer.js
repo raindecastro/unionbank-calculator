@@ -13,18 +13,18 @@ class ResultsContainer extends Component {
       <div className="resultsContainer">
         <div className="resultsContainer__firstSection">
           <h1 className="resultsContainer__header">
-            Pre-qualififcation Result
+            Your Pre-qualification Results
           </h1>
         </div>
         <div className="resultsContainer__secondSection">
           <div>
             <p style={{ color: '#666666', marginBottom: '1em' }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+              If results are ok: “You are pre-qualified! To proceed with your
+              application, go to XXXX….”
             </p>
             <p style={{ color: '#666666', marginBottom: '2em' }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+              If results are not ok: “We’re almost there! The bank would like to
+              get some more information. Please contact XXXX…”
             </p>
           </div>
           <div className="resultsContainer__infoList">

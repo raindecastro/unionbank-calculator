@@ -1,0 +1,32 @@
+.union-switch {
+  display: block;
+  position: relative;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  width: 60px;
+  height: 30px; }
+  .union-switch i {
+    border-radius: 15px;
+    content: '';
+    display: block;
+    min-width: 60px;
+    height: 30px;
+    background-color: #dae3ea; }
+    .union-switch i:before {
+      border-radius: 15px;
+      transition: all 0.1s ease-in;
+      content: '';
+      display: block;
+      position: absolute;
+      top: 4px;
+      right: 34px;
+      width: 22px;
+      height: 22px;
+      background-color: #ffffff; }
+  .union-switch input {
+    position: absolute;
+    left: -9999px; }
+    .union-switch input:checked + i {
+      background-color: #fca222; }
+    .union-switch input:checked + i:before {
+      transform: translateX(30px); }

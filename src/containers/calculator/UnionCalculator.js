@@ -4,6 +4,11 @@ import UnionButton from '../../shared/burger/button/UnionButton';
 import UnionInput from '../../shared/input/UnionInput';
 import FormValidation from '../../helpers/FormValidation';
 import { animateScroll as scroll } from 'react-scroll';
+import 'react-dates/initialize';
+import { SingleDatePicker } from 'react-dates';
+import UnionSwitch from '../../shared/input/UnionSwitch';
+import { Collapse } from 'react-collapse';
+import 'react-dates/lib/css/_datepicker.css';
 
 import {
   formatPesos,
@@ -21,11 +26,14 @@ class UnionCalculator extends Component {
       firstName: '',
       lastName: '',
       middleName: '',
+      birthDate: null,
       monthlySalary: 0,
       downpayment: 0,
       loanTenure: 0,
       ammortization: 0,
       totalAmount: 0,
+      focused: false,
+      advancedSettingsIsOpen: false,
     };
   }
 
@@ -94,6 +102,7 @@ class UnionCalculator extends Component {
       monthlySalary,
       loanTenure,
       downpayment,
+      advancedSettingsIsOpen,
     } = this.state;
     return (
       <div className="unionCalculator">
@@ -106,7 +115,7 @@ class UnionCalculator extends Component {
               <h1>Calculator</h1>
             </div>
             <div className="unionCalculator__description">
-              <p>We'll help you calculate how much is your approvable loan</p>
+              <p>Let us help you compute your approvable loan amount</p>
             </div>
           </div>
           <UnionInput
@@ -122,7 +131,7 @@ class UnionCalculator extends Component {
             onChange={e => {
               this.handleInputChange(e);
             }}
-            label="Down Payment"
+            label="Downpayment (%)"
             placeholder="0.00%"
           />
           <UnionInput
@@ -130,7 +139,7 @@ class UnionCalculator extends Component {
             onChange={e => {
               this.handleInputChange(e);
             }}
-            label="Loan Tenure"
+            label="Length of Loan (Years)"
             placeholder="0"
           />
           <div className="unionCalculator__summary">
@@ -144,9 +153,9 @@ class UnionCalculator extends Component {
               )}
             </h1>
             <br />
-            <span className="unionCalculator__summaryLabel">Interest Rate</span>
+            {/* <span className="unionCalculator__summaryLabel">Interest Rate</span>
             <p>8%</p>
-            <br />
+            <br /> */}
             <span className="unionCalculator__summaryLabel">
               Monthly Ammortization
             </span>
@@ -199,13 +208,55 @@ class UnionCalculator extends Component {
             onChange={e => this.handleInputChange(e)}
             // errorMessage={this.props.errorLastName}
           />
-          <UnionInput
+          {/* <UnionInput
             name="birthDate"
             style={{ backgroundColor: 'white', marginBottom: '2em' }}
             label="Birth Date"
             placeholder="Enter Birth Date"
             onChange={e => this.handleInputChange(e)}
-          />
+          /> */}
+          <div className="unionCalculator__birthDiv">
+            <span className="scout-input__label">Birth Date</span>
+            <SingleDatePicker
+              date={this.state.birthDate} // momentPropTypes.momentObj or null
+              onDateChange={date => this.setState({ birthDate: date })} // PropTypes.func.isRequired
+              focused={this.state.focused} // PropTypes.bool
+              onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+              id="your_unique_id" // PropTypes.string.isRequired,
+              small={true}
+              numberOfMonths={1}
+              placeholder="Enter Birth Date"
+            />
+          </div>
+          <div className="unionCalculator__switchDiv">
+            <UnionSwitch
+              checked={advancedSettingsIsOpen}
+              onChange={() =>
+                this.setState({
+                  advancedSettingsIsOpen: !advancedSettingsIsOpen,
+                })
+              }
+            />
+            <span>SHOW MORE</span>
+          </div>
+          <Collapse isOpened={advancedSettingsIsOpen}>
+            <UnionInput
+              name="firstName"
+              style={{ backgroundColor: 'white' }}
+              label="Mobile Number"
+              placeholder="Enter Mobile Number"
+              onChange={e => this.handleInputChange(e)}
+              // errorMessage={this.props.errorFirstName}
+            />
+            <UnionInput
+              name="firstName"
+              style={{ backgroundColor: 'white' }}
+              label="Project Name"
+              placeholder="Enter Project Name"
+              onChange={e => this.handleInputChange(e)}
+              // errorMessage={this.props.errorFirstName}
+            />
+          </Collapse>
           <UnionButton
             onClick={() => this.onFormSend()}
             color="union"

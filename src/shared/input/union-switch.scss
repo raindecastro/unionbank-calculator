@@ -1,0 +1,42 @@
+.union-switch {
+  display: block;
+  position: relative;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+
+  i {
+    border-radius: 15px;
+    content: '';
+    display: block;
+    min-width: 60px;
+    height: 30px;
+    background-color: #dae3ea;
+    &:before {
+      border-radius: 15px;
+      transition: all 0.1s ease-in;
+      content: '';
+      display: block;
+      position: absolute;
+      top: 4px;
+      right: 34px;
+      width: 22px;
+      height: 22px;
+      background-color: #ffffff;
+    }
+  }
+
+  input {
+    position: absolute;
+    left: -9999px;
+
+    &:checked + i {
+      background-color: #fca222;
+    }
+
+    &:checked + i:before {
+      transform: translateX(30px);
+    }
+  }
+}
