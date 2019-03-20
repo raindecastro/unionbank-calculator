@@ -9,13 +9,13 @@ import { SingleDatePicker } from 'react-dates';
 import UnionSwitch from '../../shared/input/UnionSwitch';
 import { Collapse } from 'react-collapse';
 import 'react-dates/lib/css/_datepicker.css';
+import moment from 'moment';
 
 import {
   formatPesos,
   getAmmortization,
   getTotalAmount,
 } from '../../helpers/utility';
-
 import './union-calculator.scss';
 const arrowDown = require('../../assets/images/arrow-down.svg');
 const pesoSign = '\u20B1';
@@ -94,6 +94,38 @@ class UnionCalculator extends Component {
       console.log('HERE HERE');
       this.props.history.push('/results');
     }
+  };
+
+  renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div>
+          <select
+            value={month.month()}
+            onChange={e => onMonthSelect(month, e.target.value)}
+          >
+            {moment.months().map((label, value) => (
+              <option value={value}>{label}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <select
+            value={month.year()}
+            onChange={e => onYearSelect(month, e.target.value)}
+          >
+            {this.returnYears()}
+          </select>
+        </div>
+      </div>
+    );
+  };
+  returnYears = () => {
+    let years = [];
+    for (let i = moment().year() - 100; i <= moment().year(); i++) {
+      years.push(<option value={i}>{i}</option>);
+    }
+    return years;
   };
 
   render() {
@@ -226,6 +258,7 @@ class UnionCalculator extends Component {
               small={true}
               numberOfMonths={1}
               placeholder="Enter Birth Date"
+              renderMonthElement={this.renderMonthElement}
             />
           </div>
           <div className="unionCalculator__switchDiv">
