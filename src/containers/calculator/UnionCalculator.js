@@ -259,7 +259,7 @@ class UnionCalculator extends Component {
               numberOfMonths={1}
               placeholder="Enter Birth Date"
               renderMonthElement={this.renderMonthElement}
-              isOutsideRange={true}
+              isOutsideRange={() => false}
             />
           </div>
           <div className="unionCalculator__switchDiv">
