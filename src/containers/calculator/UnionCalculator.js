@@ -56,7 +56,6 @@ class UnionCalculator extends Component {
   };
 
   handleInputChange = e => {
-    this.formComputation();
     let change = {};
     if (
       e.target.name === 'phone' &&
@@ -66,7 +65,7 @@ class UnionCalculator extends Component {
       e.target.value = `+${e.target.value}`;
     }
     change[e.target.name] = e.target.value;
-    this.setState(change);
+    this.setState(change, () => this.formComputation());
     this.setState({ showError: false });
     if (e.target.name === 'firstName') {
       this.props.validateFirstName(e.target.value);
@@ -168,13 +167,19 @@ class UnionCalculator extends Component {
           <span className="scout-input__label">Downpayment</span>
           <div className="unionCalculator__downpayment">
             <UnionRadioButton
-              onClick={() => this.setState({ downpayment: 10 })}
+              onClick={() => {
+                this.setState({ downpayment: 10 }, () =>
+                  this.formComputation()
+                );
+              }}
               color="union"
               text="10%"
               selected={downpayment === 10}
             />
             <UnionRadioButton
-              onClick={() => this.setState({ downpayment: 20 })}
+              onClick={() =>
+                this.setState({ downpayment: 20 }, () => this.formComputation())
+              }
               color="union"
               text="20%"
               selected={downpayment === 20}
@@ -184,19 +189,25 @@ class UnionCalculator extends Component {
           <span className="scout-input__label">Length of Loan (Years)</span>
           <div className="unionCalculator__loanYears">
             <UnionRadioButton
-              onClick={() => this.setState({ loanTenure: 1 })}
+              onClick={() =>
+                this.setState({ loanTenure: 1 }, () => this.formComputation())
+              }
               color="union"
               text="1"
               selected={loanTenure === 1}
             />
             <UnionRadioButton
-              onClick={() => this.setState({ loanTenure: 3 })}
+              onClick={() =>
+                this.setState({ loanTenure: 3 }, () => this.formComputation())
+              }
               color="union"
               text="3"
               selected={loanTenure === 3}
             />
             <UnionRadioButton
-              onClick={() => this.setState({ loanTenure: 5 })}
+              onClick={() =>
+                this.setState({ loanTenure: 5 }, () => this.formComputation())
+              }
               color="union"
               text="5"
               selected={loanTenure === 5}
@@ -204,19 +215,25 @@ class UnionCalculator extends Component {
           </div>
           <div className="unionCalculator__loanYears">
             <UnionRadioButton
-              onClick={() => this.setState({ loanTenure: 10 })}
+              onClick={() =>
+                this.setState({ loanTenure: 10 }, () => this.formComputation())
+              }
               color="union"
               text="10"
               selected={loanTenure === 10}
             />
             <UnionRadioButton
-              onClick={() => this.setState({ loanTenure: 15 })}
+              onClick={() =>
+                this.setState({ loanTenure: 15 }, () => this.formComputation())
+              }
               color="union"
               text="15"
               selected={loanTenure === 15}
             />
             <UnionRadioButton
-              onClick={() => this.setState({ loanTenure: 20 })}
+              onClick={() =>
+                this.setState({ loanTenure: 20 }, () => this.formComputation())
+              }
               color="union"
               text="20"
               selected={loanTenure === 20}
