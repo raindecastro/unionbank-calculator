@@ -222,14 +222,6 @@ class UnionCalculator extends Component {
               selected={loanTenure === 20}
             />
           </div>
-          <UnionInput
-            name="loanTenure"
-            onChange={e => {
-              this.handleInputChange(e);
-            }}
-            label="Length of Loan (Years)"
-            placeholder="0"
-          />
           <div className="unionCalculator__summary">
             <span className="unionCalculator__summaryLabel">
               Total Loanable Property Amount

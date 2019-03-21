@@ -1,3 +1,7 @@
+.unionCalculator .scout-input__label {
+  margin-bottom: 0.5em;
+  display: block; }
+
 .unionCalculator__error {
   color: red;
   text-align: center; }
