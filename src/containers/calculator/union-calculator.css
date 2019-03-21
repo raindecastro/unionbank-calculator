@@ -1,3 +1,23 @@
+.unionCalculator__error {
+  color: red;
+  text-align: center; }
+
+.unionCalculator__confirmation {
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between; }
+
+.unionCalculator__downpayment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1em; }
+
+.unionCalculator__loanYears {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1em;
+  margin-bottom: 1em; }
+
 .unionCalculator__switchDiv {
   display: flex;
   justify-content: flex-end;

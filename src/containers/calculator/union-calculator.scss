@@ -1,4 +1,24 @@
 .unionCalculator {
+  &__error {
+    color: red;
+    text-align: center;
+  }
+  &__confirmation {
+    margin: 1em 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__downpayment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1em;
+  }
+  &__loanYears {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 1em;
+    margin-bottom: 1em;
+  }
   &__switchDiv {
     display: flex;
     justify-content: flex-end;

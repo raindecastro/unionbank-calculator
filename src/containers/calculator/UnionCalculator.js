@@ -10,6 +10,7 @@ import UnionSwitch from '../../shared/input/UnionSwitch';
 import { Collapse } from 'react-collapse';
 import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment';
+import UnionCheckBox from '../../shared/burger/button/UnionCheckBox';
 
 import {
   formatPesos,
@@ -17,6 +18,7 @@ import {
   getTotalAmount,
 } from '../../helpers/utility';
 import './union-calculator.scss';
+import UnionRadioButton from '../../shared/burger/button/UnionRadioButton';
 const arrowDown = require('../../assets/images/arrow-down.svg');
 const pesoSign = '\u20B1';
 class UnionCalculator extends Component {
@@ -28,12 +30,14 @@ class UnionCalculator extends Component {
       middleName: '',
       birthDate: null,
       monthlySalary: 0,
-      downpayment: 0,
-      loanTenure: 0,
+      downpayment: 10,
+      loanTenure: 1,
       ammortization: 0,
       totalAmount: 0,
       focused: false,
       advancedSettingsIsOpen: false,
+      confirmation: false,
+      showError: false,
     };
   }
 
@@ -63,6 +67,7 @@ class UnionCalculator extends Component {
     }
     change[e.target.name] = e.target.value;
     this.setState(change);
+    this.setState({ showError: false });
     if (e.target.name === 'firstName') {
       this.props.validateFirstName(e.target.value);
     } else if (e.target.name === 'lastName') {
@@ -135,6 +140,8 @@ class UnionCalculator extends Component {
       loanTenure,
       downpayment,
       advancedSettingsIsOpen,
+      confirmation,
+      showError,
     } = this.state;
     return (
       <div className="unionCalculator">
@@ -158,14 +165,63 @@ class UnionCalculator extends Component {
             label="Monthly Salary"
             placeholder="0.00"
           />
-          <UnionInput
-            name="downpayment"
-            onChange={e => {
-              this.handleInputChange(e);
-            }}
-            label="Downpayment (%)"
-            placeholder="0.00%"
-          />
+          <span className="scout-input__label">Downpayment</span>
+          <div className="unionCalculator__downpayment">
+            <UnionRadioButton
+              onClick={() => this.setState({ downpayment: 10 })}
+              color="union"
+              text="10%"
+              selected={downpayment === 10}
+            />
+            <UnionRadioButton
+              onClick={() => this.setState({ downpayment: 20 })}
+              color="union"
+              text="20%"
+              selected={downpayment === 20}
+            />
+          </div>
+          <br />
+          <span className="scout-input__label">Length of Loan (Years)</span>
+          <div className="unionCalculator__loanYears">
+            <UnionRadioButton
+              onClick={() => this.setState({ loanTenure: 1 })}
+              color="union"
+              text="1"
+              selected={loanTenure === 1}
+            />
+            <UnionRadioButton
+              onClick={() => this.setState({ loanTenure: 3 })}
+              color="union"
+              text="3"
+              selected={loanTenure === 3}
+            />
+            <UnionRadioButton
+              onClick={() => this.setState({ loanTenure: 5 })}
+              color="union"
+              text="5"
+              selected={loanTenure === 5}
+            />
+          </div>
+          <div className="unionCalculator__loanYears">
+            <UnionRadioButton
+              onClick={() => this.setState({ loanTenure: 10 })}
+              color="union"
+              text="10"
+              selected={loanTenure === 10}
+            />
+            <UnionRadioButton
+              onClick={() => this.setState({ loanTenure: 15 })}
+              color="union"
+              text="15"
+              selected={loanTenure === 15}
+            />
+            <UnionRadioButton
+              onClick={() => this.setState({ loanTenure: 20 })}
+              color="union"
+              text="20"
+              selected={loanTenure === 20}
+            />
+          </div>
           <UnionInput
             name="loanTenure"
             onChange={e => {
@@ -291,8 +347,36 @@ class UnionCalculator extends Component {
               // errorMessage={this.props.errorFirstName}
             />
           </Collapse>
+          <div className="unionCalculator__confirmation">
+            <UnionCheckBox
+              checked={confirmation}
+              onCheckedBox={() =>
+                this.setState({ confirmation: !confirmation, showError: false })
+              }
+            />
+            <p>
+              I confirm that all information provided are true and correct. I
+              accept that the use of this app may require processing of my data
+              for the purposes of credit scoring and credit checks (i.e. NFIS).
+              — will be reworded
+            </p>
+          </div>
+          {showError && (
+            <div>
+              <span className="unionCalculator__error">
+                Confirmation is required
+              </span>
+            </div>
+          )}
+          <br />
           <UnionButton
-            onClick={() => this.onFormSend()}
+            onClick={() => {
+              if (confirmation) {
+                this.onFormSend();
+              } else {
+                this.setState({ showError: true });
+              }
+            }}
             color="union"
             text="SEND"
           />
